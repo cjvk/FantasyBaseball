@@ -1,0 +1,37 @@
+# "Single point of storage for all regex's"
+
+__headers_ = {'H.TOP' : 'SEASON.*\n.*TEAM.*\n.*G.*\n.*AB.*\n.*R.*\n(?:.*\n){13,}?',
+              'H.MID' : 'SEASON.*\n.*TEAM.*\n.*TPA.*\n.*#PIT.*\n.*#P/PA.*\n(?:.*\n){9,}?',
+              'P.TOP' : 'SEASON.*\n.*TEAM.*\n.*G.*\n.*GS.*\n.*CG.*\n(?:.*\n){14,}?',
+              'P.MID' : 'SEASON.*\n.*TEAM.*\n.*W%.*\n.*#PIT.*\n.*TBF.*\n(?:.*\n){9,}?',
+              }
+__stat_ = {'H.OBP.END' : '<td>(.*)</td>\n(?:.*\n){3}.*Total',
+           'H.SLG.END' : '<td>(.*)</td>\n(?:.*\n){2}.*Total',
+           'H.TPA.END' : '<td>(.*)</td>\n(?:.*\n){12}.*Total',
+           'H.AB.END' : '<td>(.*)</td>\n(?:.*\n){15}.*Total',
+           'P.OBP.END' : '<td>(.*)</td>\n(?:.*\n){3}.*Total',
+           'P.SLG.END' : '<td>(.*)</td>\n(?:.*\n){2}.*Total',
+           'P.TBF.END' : '<td>(.*)</td>\n(?:.*\n){10}.*Total',
+           'P.BB.END' : '<td>(.*)</td>\n(?:.*\n){8}.*Total',
+           'P.SO.END' : '<td>(.*)</td>\n(?:.*\n){7}.*Total',
+           'P.IP.END' : '<td>(.*)</td>\n(?:.*\n){13}.*Total',
+           'P.SV.END' : '<td>(.*)</td>\n(?:.*\n){4}.*Total',
+           'P.BLSV.END' : '<td>(.*)</td>\n(?:.*\n){2}.*Total',
+           'P.G.END' : '<td>(.*)</td>\n(?:.*\n){17}.*Total',
+           }
+
+regex = {'H.OBP' : __headers_['H.TOP'] + __stat_['H.OBP.END'],
+         'H.SLG' : __headers_['H.TOP'] + __stat_['H.SLG.END'],
+         'H.TPA' : __headers_['H.MID'] + __stat_['H.TPA.END'],
+         'H.AB' : __headers_['H.TOP'] + __stat_['H.AB.END'],
+         'P.OBP' : __headers_['P.MID'] + __stat_['P.OBP.END'],
+         'P.SLG' : __headers_['P.MID'] + __stat_['P.SLG.END'],
+         'P.TBF' : __headers_['P.MID'] + __stat_['P.TBF.END'],
+         'P.BB' : __headers_['P.TOP'] + __stat_['P.BB.END'],
+         'P.SO' : __headers_['P.TOP'] + __stat_['P.SO.END'],
+         'P.IP' : __headers_['P.TOP'] + __stat_['P.IP.END'],
+         'P.SV' : __headers_['P.TOP'] + __stat_['P.SV.END'],
+         'P.BLSV' : __headers_['P.TOP'] + __stat_['P.BLSV.END'],
+         'P.G' : __headers_['P.TOP'] + __stat_['P.G.END'],
+         'pos' : '#[0-9][0-9A-Za-z., ]* \| (.*)</td>',
+         }
